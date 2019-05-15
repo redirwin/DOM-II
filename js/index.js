@@ -83,4 +83,9 @@ mainNav.addEventListener('click', function (event) {
     console.log("This is the main nav!");
 })
 
+// Trying some GSAP
+window.addEventListener('click', event => {
+    TweenMax.to(logoText, .75, { backgroundColor: "yellow", padding: "10px", border: "1px solid black", borderRadius: "5px", position: "relative", right: "100px" });
+})
+
 
