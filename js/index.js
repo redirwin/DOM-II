@@ -4,6 +4,8 @@ const navLinks = document.querySelectorAll('nav a');
 const contentHeaders = document.querySelectorAll('h2');
 const destination = document.querySelectorAll('.destination');
 const footer = document.querySelector('footer');
+const printBtn = document.createElement('button');
+
 
 logoText.addEventListener('mouseover',
 
@@ -40,13 +42,11 @@ document.addEventListener('wheel', event => {
 })
 
 window.addEventListener('mousedown', event => {
-    // console.log('mouse is down');
     event.target.style.backgroundColor = 'black';
     event.target.style.color = 'yellow';
 })
 
 window.addEventListener('mouseup', event => {
-    // console.log('mouse is down');
     event.target.style.backgroundColor = 'white';
     event.target.style.color = 'black';
 })
@@ -60,19 +60,21 @@ imageDrag.forEach(img => {
     })
 })
 
-const nav = document.querySelector('.nav')
-
-const printBtn = document.createElement('button');
-
+// beforeprint example
 printBtn.textContent = 'Print This Page';
-
 footer.appendChild(printBtn);
-
 printBtn.onclick = function () {
     window.print();
 }
-
-window.addEventListener('beforeprint', (event) => {
+window.addEventListener('beforeprint', event => {
     alert('Click OK to print.');
 })
 
+
+// Prevent Default Example
+navLinks.forEach(function (navItem) {
+    navItem.addEventListener('click', event => {
+        console.log('That will not work!')
+        event.preventDefault();
+    })
+})
