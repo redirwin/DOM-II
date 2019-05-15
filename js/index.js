@@ -5,10 +5,10 @@ const contentHeaders = document.querySelectorAll('h2');
 const destination = document.querySelectorAll('.destination');
 const footer = document.querySelector('footer');
 const printBtn = document.createElement('button');
-
+const signUpBtns = document.querySelectorAll('.btn');
+const mainNav = document.querySelector('.main-navigation');
 
 logoText.addEventListener('mouseover',
-
     event => {
         event.target.classList.add('busColors');
     })
@@ -70,11 +70,17 @@ window.addEventListener('beforeprint', event => {
     alert('Click OK to print.');
 })
 
-
-// Prevent Default Example
+// Prevent Default AND Stop Propogation Example
 navLinks.forEach(function (navItem) {
     navItem.addEventListener('click', event => {
         console.log('That will not work!')
         event.preventDefault();
+        event.stopPropagation();
     })
 })
+
+mainNav.addEventListener('click', function (event) {
+    console.log("This is the main nav!");
+})
+
+
